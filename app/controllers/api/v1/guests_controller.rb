@@ -1,19 +1,16 @@
-class GuestsController < ApplicationController
+class Api::V1::GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :update, :destroy]
 
-  # GET /guests
   def index
     @guests = Guest.all
 
     render json: @guests
   end
 
-  # GET /guests/1
   def show
     render json: @guest
   end
 
-  # POST /guests
   def create
     @guest = Guest.new(guest_params)
 
@@ -24,7 +21,6 @@ class GuestsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /guests/1
   def update
     if @guest.update(guest_params)
       render json: @guest
@@ -33,7 +29,6 @@ class GuestsController < ApplicationController
     end
   end
 
-  # DELETE /guests/1
   def destroy
     @guest.destroy
   end

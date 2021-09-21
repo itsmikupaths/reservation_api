@@ -1,20 +1,18 @@
-class ReservationsController < ApplicationController
+class Api::V1::ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :update, :destroy]
 
-  # GET /reservations
   def index
     @reservations = Reservation.all
 
     render json: @reservations
   end
 
-  # GET /reservations/1
   def show
-    render json: @reservation, only: [:id, :start_date, :end_date]
+    render json: @reservation
   end
 
-  # POST /reservations
   def create
+    #render json: params
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
@@ -24,7 +22,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reservations/1
   def update
     if @reservation.update(reservation_params)
       render json: @reservation
@@ -33,7 +30,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # DELETE /reservations/1
   def destroy
     @reservation.destroy
   end
