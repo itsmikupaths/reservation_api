@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1
   def show
-    render json: @reservation
+    render json: @reservation, only: [:id, :start_date, :end_date]
   end
 
   # POST /reservations
